@@ -2,6 +2,11 @@
 
 get total length of videos in a folder.
 
+## Prerequisite
+
+- `Python3`
+- `ffprobe`
+
 ## Example
 
 ```
