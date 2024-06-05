@@ -29,11 +29,11 @@ Total duration of all videos: 1771.063375 seconds (0h 29m 31s)
 To show the total length of videos in a folder:
 
 ```
-python3 tlenv.py --folder <folder_path>
+python3 tlenv/tlenv.py --folder <folder_path>
 ```
 
 To output the total length of videos in a folder to a file:
 
 ```
-python3 tlenv.py --folder <folder_path> --output <output_file_path>
+python3 tlenv/tlenv.py --folder <folder_path> --output <output_file_path>
 ```
