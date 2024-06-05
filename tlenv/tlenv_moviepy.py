@@ -1,6 +1,7 @@
 import os
 import argparse
 from moviepy.editor import VideoFileClip
+from utils import format_duration, save_to_file, message
 
 # add command line arguments
 parser = argparse.ArgumentParser()
@@ -27,25 +28,15 @@ def get_durations_in_folder(folder_path):
     return durations
 
 
-def format_duration(seconds):
-    hours = int(seconds // 3600)
-    minutes = int((seconds % 3600) // 60)
-    seconds = int(seconds % 60)
-    return f"{hours}h {minutes}m {seconds}s"
-
 folder_path = args.folder  # Update this to the path of your folder
 output_path = args.output
 durations = get_durations_in_folder(folder_path)
-
-total_duration = sum(durations.values())
+seconds = sum(durations.values())
 
 for filename, duration in durations.items():
     print(f"{filename}: {duration} seconds ({format_duration(duration)})")
 
-print(f"\nTotal duration of all videos: {total_duration} seconds ({format_duration(total_duration)})")
+print(message(seconds))
 
-# Save to a file (optional)
-with open(output_path, 'w') as f:
-    for filename, duration in durations.items():
-        f.write(f"{filename}: {duration} seconds ({format_duration(duration)})\n")
-    f.write(f"\nTotal duration of all videos: {total_duration} seconds ({format_duration(total_duration)})\n")
+if output_path is not None:
+    save_to_file(output_path, seconds, durations)
