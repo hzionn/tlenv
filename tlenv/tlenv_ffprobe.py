@@ -1,7 +1,10 @@
 import os
+import platform
 import subprocess
 import argparse
 from utils import format_duration, save_to_file, message
+
+METHOD = "ffprobe"
 
 # add command line arguments
 parser = argparse.ArgumentParser()
@@ -9,12 +12,10 @@ parser.add_argument("-f", "--folder", type=str)
 parser.add_argument("-o", "--output", type=str, default=None)
 args = parser.parse_args()
 
-# Define the absolute path to ffprobe
-assert "ffprobe" in os.listdir(), "must have ffprobe in the same directory"
-ffprobe_path = os.path.join(os.getcwd(), "ffprobe")  # For Windows use 'ffprobe.exe'
-
 
 def get_video_duration(filename: str) -> float:
+    ffprobe = "ffprobe.exe" if platform.system() == "Windows" else "ffprobe"
+    ffprobe_path = os.path.join(os.getcwd(), ffprobe)
     result = subprocess.run(
         [
             ffprobe_path,
