@@ -1,7 +1,9 @@
 import os
 import argparse
-from moviepy.editor import VideoFileClip
+import cv2
 from utils import format_duration, save_to_file, message
+
+METHOD = "opencv"
 
 # add command line arguments
 parser = argparse.ArgumentParser()
@@ -11,8 +13,11 @@ args = parser.parse_args()
 
 
 def get_video_duration(filename):
-    clip = VideoFileClip(filename)
-    return clip.duration
+    video = cv2.VideoCapture(filename)
+    fps = video.get(cv2.CAP_PROP_FPS)
+    frame_count = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+    duration = frame_count / fps
+    return duration
 
 
 def get_durations_in_folder(folder_path):
@@ -28,7 +33,7 @@ def get_durations_in_folder(folder_path):
     return durations
 
 
-folder_path = args.folder  # Update this to the path of your folder
+folder_path = args.folder
 output_path = args.output
 durations = get_durations_in_folder(folder_path)
 seconds = sum(durations.values())
