@@ -1,4 +1,4 @@
-media_types = {".mp4", ".avi", ".mov", ".mkv", ".flv", ".wmv"}
+media_types = (".mp4", ".avi", ".mov", ".mkv", ".flv", ".wmv")
 
 def format_duration(seconds: int) -> str:
     hours = int(seconds // 3600)
