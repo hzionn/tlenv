@@ -16,14 +16,15 @@ def get_durations_in_folder(folder_path: str) -> dict:
     for filename in os.listdir(folder_path):
         if filename.lower().endswith(utils.media_types):
             file_path = os.path.join(folder_path, filename)
-            if METHOD == "ffprobe":
-                duration = ffprobe.get_video_duration(file_path)
-            elif METHOD == "mvpy":
+            if METHOD == "mvpy":
                 duration = mvpy.get_video_duration(file_path)
             elif METHOD == "opencv":
                 duration = opencv.get_video_duration(file_path)
+            elif METHOD == "ffprobe":
+                print("ffprobe is no longer support")
+                break
             else:
-                print("available options: ffprobe, mvpy, opencv")
+                print("available options: mvpy and opencv")
                 break
             durations[filename] = duration
     return durations
