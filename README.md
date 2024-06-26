@@ -5,7 +5,7 @@ Get total length of videos in a folder.
 ## Prerequisite
 
 - `Python3`
-- `ffprobe`, `opencv`, `moviepy` (optional, just pick one)
+- `opencv`, `moviepy` (optional, just pick one)
 
 ## Example
 
@@ -29,11 +29,11 @@ Total duration of all videos: 1771.063375 seconds (0h 29m 31s)
 To show the total length of videos in a folder:
 
 ```
-python3 tlenv/tlenv.py --folder <folder_path> --method <ffprobe/mvpy/opencv>
+python3 tlenv/tlenv.py --folder <folder_path> --method <mvpy/opencv>
 ```
 
 To output the total length of videos in a folder to a file:
 
 ```
-python3 tlenv/tlenv.py --folder <folder_path> --method <ffprobe/mvpy/opencv> --output <output_file_path>
+python3 tlenv/tlenv.py --folder <folder_path> --method <mvpy/opencv> --output <output_file_path>
 ```

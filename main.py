@@ -1,6 +1,6 @@
 import os
 import argparse
-from tlenv import utils, ffprobe, mvpy, opencv
+from tlenv import utils, mvpy, opencv
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--method", type=str)
